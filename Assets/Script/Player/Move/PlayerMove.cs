@@ -5,15 +5,10 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     #region//インスペクターで設定
-    Vector3 latestPos;
-    [SerializeField]
-    [Header("監督オブジェクト")] private GameObject directorObj;
     [SerializeField]
     [Header("通常時のスピード")] private float normalSpeed;
     [SerializeField]
     [Header("ダッシュ時のスピード")] private float sprintSpeed;
-    [SerializeField]
-    private Rigidbody rb;
     [SerializeField]
     [Header("接地判定")] private GameObject groundObj;
     [SerializeField]
@@ -25,6 +20,7 @@ public class PlayerMove : MonoBehaviour
     #endregion
 
     #region//プライベート変数
+    private Rigidbody rb;
     private Animator anim;                             //アニメーター
     private GroundCheck ground;                        //
     //private Slider_IncreaseAndDecrease stamina_slider; //sliderバー増減スクリプト
@@ -58,12 +54,6 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ground = groundObj.GetComponent<GroundCheck>();
         //anim = GetComponent<Animator>();
-
-        //マウスカーソルを非表示にし、位置を固定
-        //Cursor.visible = false;
-        //Cursor.lockState = CursorLockMode.Locked;
-
-
 
         //スタミナ設定
         now_Stamina = max_Stamina;
