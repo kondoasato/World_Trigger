@@ -1260,7 +1260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1087426690
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2580,6 +2580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2133614972}
   - component: {fileID: 2133614973}
+  - component: {fileID: 2133614974}
   m_Layer: 5
   m_Name: WeaponMenuUI
   m_TagString: Untagged
@@ -2621,6 +2622,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIObj: {fileID: 1087426689}
   first_active: 0
+--- !u!114 &2133614974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133614971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5332e266df96847a66641ffcbc342b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - weaponObj:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - weaponObj: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
