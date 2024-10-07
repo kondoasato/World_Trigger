@@ -6,15 +6,22 @@ using UnityEngine.UI;
 public class WeaponMenuManager : MonoBehaviour
 {
     [SerializeField]
+    [Header("WeaponImageホルダーオブジェクト")] private GameObject[] holderObj;
+    [SerializeField]
+    [Header("ホルダーのフレームカラー")] private Color flameColor;
+    [SerializeField]
     [Header("WeaponImageオブジェクト")] private Line[] lines;
+    [SerializeField]
+    [Header("SelectImageオブジェクト")] private GameObject selectImgObj;
 
     private UI_ActiveSwitch activeSwitch; //UI_ActiveSwitchスクリプト
+    private Outline[] outline;
     private int sel_x;                    //現在選択番号(x軸)
     private int sel_y;                    //現在選択番号(y軸)
     private bool cool_t_flg = false;      //クールタイムフラグ
     private float cool_t = 0.0f;          //クールタイム計測
     private float cool_t_constant = 0.5f; //クールタイム
-
+    private bool select_flg = false;      //ホルダーと武器選択画面切り替えフラグ
 
     /// <summary>
     /// 四則演算
@@ -32,9 +39,16 @@ public class WeaponMenuManager : MonoBehaviour
         //コンポーネント取得
         activeSwitch = GetComponent<UI_ActiveSwitch>();
 
+        for (int i = 0; i < holderObj.Length; i++)
+        {
+            outline[i] = holderObj[i].GetComponent<Outline>();
+        }
+
         //選択番号初期化
         sel_x = 0;
         sel_y = 0;
+
+        selectImgObj.transform.position = lines[sel_y].Weapon[sel_x].transform.position;
     }
 
     /// <summary>
@@ -44,8 +58,8 @@ public class WeaponMenuManager : MonoBehaviour
     private bool CoolTime()
     {
         bool tempflg = false;
-        cool_t += Time.deltaTime;
-        if (cool_t > 0.35f)
+        cool_t++;
+        if (cool_t > 50f)
         {
             cool_t = 0.0f;
             tempflg = true;
@@ -76,7 +90,7 @@ public class WeaponMenuManager : MonoBehaviour
         }
 
         //選択範囲制限
-        if (now_num >= 0 && now_num < lines.Length)
+        if (now_num >= 0 && now_num < lines[0].Tile_Length)
         {
             //範囲を超えたら元の値で返す
             temp = now_num;
@@ -85,29 +99,74 @@ public class WeaponMenuManager : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    /// ホルダー選択
+    /// </summary>
+    private void SelectHolder()
+    {
+        //移動入力
+        //右
+        if (Input.GetKey(KeyCode.D)) { sel_x = Sel_Limit(sel_x, Operator.add); cool_t_flg = false; }
+        //左
+        else if (Input.GetKey(KeyCode.A)) { sel_x = Sel_Limit(sel_x, Operator.sub); cool_t_flg = false; }
+
+        //枠の色変更
+        for (int i = 0; i < outline.Length; i++)
+        {
+            outline[i].effectColor = Color.black;
+        }
+        outline[sel_x].effectColor = flameColor;
+
+        //決定(SPACEキー)入力
+        if (Input.GetKey(KeyCode.Space))
+        {
+            select_flg = true;
+        }
+    }
+
+    /// <summary>
+    /// 武器をセット
+    /// </summary>
+    private void SetWeapon()
+    {
+        //移動入力
+        //右
+        if (Input.GetKey(KeyCode.D)) { sel_x = Sel_Limit(sel_x, Operator.add); cool_t_flg = false; }
+        //左
+        else if (Input.GetKey(KeyCode.A)) { sel_x = Sel_Limit(sel_x, Operator.sub); cool_t_flg = false; }
+        //上
+        else if (Input.GetKey(KeyCode.W)) { sel_y = Sel_Limit(sel_y, Operator.sub); cool_t_flg = false; }
+        //下
+        else if (Input.GetKey(KeyCode.S)) { sel_y = Sel_Limit(sel_y, Operator.add); cool_t_flg = false; }
+
+        //選択している場所に移動
+        selectImgObj.transform.position = lines[sel_y].Weapon[sel_x].transform.position;
+
+        //決定(SPACEキー)入力
+        if (Input.GetKey(KeyCode.Space))
+        {
+
+            select_flg = false;
+        }
+
+        //escキーで戻る
+        if (Input.GetKey(KeyCode.Escape)) { select_flg = false; }
+
+    }
+
     private void Update()
     {
         if (activeSwitch.Active)
         {
-            float vertical = Input.GetAxis("Vertical");
-            float horizontal = Input.GetAxis("Horizontal");
-            float decision = Input.GetAxis("Decision");
-
             if (cool_t_flg)
             {
-                //移動入力
-                //右
-                if (horizontal > 0) { sel_x = Sel_Limit(sel_x, Operator.add); cool_t_flg = false; }
-                //左
-                else if (horizontal < 0) { sel_x = Sel_Limit(sel_x, Operator.sub); cool_t_flg = false; }
-                //上
-                else if (vertical > 0) { sel_y = Sel_Limit(sel_y, Operator.sub); cool_t_flg = false; }
-                //下
-                else if (vertical < 0) { sel_y = Sel_Limit(sel_y, Operator.add); cool_t_flg = false; }
-
-                //決定(SPACEキー)入力
-                if (decision > 0)
+                if(select_flg)
                 {
+                    SetWeapon();
+                }
+                else
+                {
+                    SelectHolder();
                 }
             }
             //入力クールタイム
