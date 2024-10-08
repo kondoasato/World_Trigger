@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5076955175583650308}
   - component: {fileID: 2109807250468518727}
   - component: {fileID: 9012737885050027598}
+  - component: {fileID: 5466805440865321101}
   m_Layer: 5
   m_Name: WeaponImage3
   m_TagString: Untagged
@@ -75,6 +76,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5466805440865321101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11543793960449063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07fb86020d7457438d86fc16b49d868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
+  consumption_trion: 0
 --- !u!1 &293633135298916093
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +101,7 @@ GameObject:
   - component: {fileID: 2726540921363804808}
   - component: {fileID: 3959846220877517389}
   - component: {fileID: 8187625952412325410}
+  - component: {fileID: 2180687143173424404}
   m_Layer: 5
   m_Name: WeaponImage4
   m_TagString: Untagged
@@ -150,6 +166,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2180687143173424404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293633135298916093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07fb86020d7457438d86fc16b49d868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
+  consumption_trion: 0
 --- !u!1 &525693305420449863
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +270,7 @@ GameObject:
   - component: {fileID: 199376647932812856}
   - component: {fileID: 7062895778204635803}
   - component: {fileID: 4123724858886244904}
+  - component: {fileID: 5511983097170745606}
   m_Layer: 5
   m_Name: WeaponImage5
   m_TagString: Untagged
@@ -304,6 +335,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5511983097170745606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559640074412154156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07fb86020d7457438d86fc16b49d868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  consumption_trion: 0
 --- !u!1 &2735570689852021770
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,8 +361,9 @@ GameObject:
   - component: {fileID: 1698448762690448658}
   - component: {fileID: 6288651451676958406}
   - component: {fileID: 3654514301220056861}
+  - component: {fileID: 4015422504574915918}
   m_Layer: 5
-  m_Name: weapon1
+  m_Name: weaponMenu_holderUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -401,6 +447,24 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 10, y: -10}
   m_UseGraphicAlpha: 1
+--- !u!114 &4015422504574915918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2735570689852021770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c9308616bea97418df6a276cdfc21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageObj:
+  - {fileID: 8193446638514265506}
+  - {fileID: 4697756648414764112}
+  - {fileID: 11543793960449063}
+  - {fileID: 293633135298916093}
+  - {fileID: 559640074412154156}
 --- !u!1 &4697756648414764112
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +476,7 @@ GameObject:
   - component: {fileID: 4237953405578077034}
   - component: {fileID: 9014968879550027457}
   - component: {fileID: 418153440403558326}
+  - component: {fileID: 1074606424305574032}
   m_Layer: 5
   m_Name: WeaponImage2
   m_TagString: Untagged
@@ -476,6 +541,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1074606424305574032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697756648414764112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07fb86020d7457438d86fc16b49d868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
+  consumption_trion: 0
 --- !u!1 &8193446638514265506
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +566,7 @@ GameObject:
   - component: {fileID: 8809121837044820947}
   - component: {fileID: 1013765197971488190}
   - component: {fileID: 8523960164791329394}
+  - component: {fileID: 734213527194575583}
   m_Layer: 5
   m_Name: WeaponImage1
   m_TagString: Untagged
@@ -551,3 +631,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &734213527194575583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8193446638514265506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07fb86020d7457438d86fc16b49d868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  consumption_trion: 0
