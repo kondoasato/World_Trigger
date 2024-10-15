@@ -8,10 +8,12 @@ public class ChangeHolderImage : MonoBehaviour
     [SerializeField]
     [Header("WeaponImageオブジェクト")] private GameObject[] imageObj;
 
-    private WeaponInfo[] weaponInfo; //WeaponInfoスクリプト
-    private WeaponInfo info;         //現在weaponinfo保持変数
+    private WeaponInfo[] weaponInfo;       //WeaponInfoスクリプト
+    private WeaponManager.WeaponID now_id; //現在ID保持変数
     private Image[] weapon_image;
     private Image this_image;
+
+    public WeaponManager.WeaponID ID { get { return now_id; } }
 
     private void Start()
     {
@@ -23,18 +25,21 @@ public class ChangeHolderImage : MonoBehaviour
             weaponInfo[i] = imageObj[i].GetComponent<WeaponInfo>();
             weapon_image[i] = imageObj[i].GetComponent<Image>();
         }
-        this_image = GetComponent<Image>();
+        this_image = this.gameObject.GetComponent<Image>();
+
+        now_id = WeaponManager.WeaponID.None;
     }
 
     /// <summary>
     /// ホルダーImage変更
     /// </summary>
     /// <param name="weaponInfo"></param>
-    public void ChangeImage(WeaponInfo weaponInfo)
+    public void ChangeImage(WeaponManager.WeaponID temp_id)
     {
+        now_id = temp_id;
         for (int i = 0; i < imageObj.Length; i++)
         {
-            if (weaponInfo.ID == this.weaponInfo[i].ID)
+            if (temp_id == this.weaponInfo[i].ID)
             {
                 this_image.color = weapon_image[i].color;
             }

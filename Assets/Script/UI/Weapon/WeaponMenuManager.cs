@@ -174,7 +174,7 @@ public class WeaponMenuManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             //ホルダー画像変更
-            changeImage[holder_num].ChangeImage(weaponInfo[sel_y][sel_x]);
+            changeImage[holder_num].ChangeImage(weaponInfo[sel_y][sel_x].ID);
             cool_t_flg = false;
             select_flg = false;
         }
