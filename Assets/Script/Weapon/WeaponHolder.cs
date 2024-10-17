@@ -41,7 +41,11 @@ public class WeaponHolder : MonoBehaviour
     {
         if (change_flg)
         {
-
+            for (int i = 0;i < weaponObj.Length;i++)
+            {
+                weaponObj[i].SetActive(false); //武器リセット
+            }
+            weaponObj[now_index - 1].SetActive(true); //武器オブジェクト起動
             change_flg = false;
         }
         else

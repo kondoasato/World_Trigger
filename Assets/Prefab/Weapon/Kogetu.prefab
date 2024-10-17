@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07fb86020d7457438d86fc16b49d868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponID: 1
+  id: 1
   consumption_trion: 0
 --- !u!1 &7806422715709200481
 GameObject:
