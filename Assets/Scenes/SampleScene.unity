@@ -1070,6 +1070,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562283536}
   m_CullTransparentMesh: 1
+--- !u!1 &565332412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 630837477117908987, guid: b11c3e496be9dd443b1d9ea1aba86edf, type: 3}
+  m_PrefabInstance: {fileID: 2032572374}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &567684184 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2735570689852021770, guid: f6a352d3e5774d9419e973ece7161b68, type: 3}
@@ -2281,6 +2286,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 571446998732683028, guid: f6a352d3e5774d9419e973ece7161b68, type: 3}
   m_PrefabInstance: {fileID: 6144328213652424040}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1492867586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 630837477117908987, guid: b11c3e496be9dd443b1d9ea1aba86edf, type: 3}
+  m_PrefabInstance: {fileID: 1398764931}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1507535272
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,6 +2432,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652016490}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1690572499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 630837477117908987, guid: b11c3e496be9dd443b1d9ea1aba86edf, type: 3}
+  m_PrefabInstance: {fileID: 1081408284}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1745884271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2681,6 +2696,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770031953}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1792171615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 630837477117908987, guid: b11c3e496be9dd443b1d9ea1aba86edf, type: 3}
+  m_PrefabInstance: {fileID: 1286220873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1796325691 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4084359352203798986, guid: e9881c6a55efa4e4ca5e6af50f1508ea, type: 3}
@@ -3075,6 +3095,26 @@ PrefabInstance:
       propertyPath: imageObj
       value: 
       objectReference: {fileID: 910231937}
+    - target: {fileID: 228856865617564739, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
+      propertyPath: weaponUIObj.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 228856865617564739, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
+      propertyPath: weaponUIObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 1492867586}
+    - target: {fileID: 228856865617564739, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
+      propertyPath: weaponUIObj.Array.data[1]
+      value: 
+      objectReference: {fileID: 1690572499}
+    - target: {fileID: 228856865617564739, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
+      propertyPath: weaponUIObj.Array.data[2]
+      value: 
+      objectReference: {fileID: 565332412}
+    - target: {fileID: 228856865617564739, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
+      propertyPath: weaponUIObj.Array.data[3]
+      value: 
+      objectReference: {fileID: 1792171615}
     - target: {fileID: 6209014531313912925, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
       propertyPath: menuObj
       value: 

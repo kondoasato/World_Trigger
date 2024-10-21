@@ -23,7 +23,8 @@ public class WeaponHolder : MonoBehaviour
         }
         //--------------------------------------------------------
 
-
+        //武器番号初期化
+        now_index = 1;
     }
 
     /// <summary>
@@ -37,18 +38,41 @@ public class WeaponHolder : MonoBehaviour
         else if (Input.GetKey(KeyCode.Alpha4)) { now_index = 4; change_flg = true; }
     }
 
+    /// <summary>
+    /// 武器オブジェクト表示切り替え
+    /// </summary>
+    private void WeaponActiveSwitch()
+    {
+        //子オブジェクト取得
+        foreach (Transform i in this.gameObject.transform)
+        {
+            //孫オブジェクト取得
+            foreach (Transform j in i.gameObject.transform)
+            {
+                //オブジェクト非表示
+                j.gameObject.SetActive(false);
+            }
+        }
+
+        //現在選択番号の子オブジェクト取得
+        foreach (Transform i in weaponObj[now_index - 1].transform)
+        {
+            //オブジェクト表示
+            i.gameObject.SetActive(true);
+        }
+    }
+
     private void Update()
     {
-        if (change_flg)
+        if (change_flg) //入力されたら武器切り替え処理実行
         {
-            for (int i = 0;i < weaponObj.Length;i++)
-            {
-                weaponObj[i].SetActive(false); //武器リセット
-            }
-            weaponObj[now_index - 1].SetActive(true); //武器オブジェクト起動
+            //表示切り替え
+            WeaponActiveSwitch();
+            //UI拡大
+
             change_flg = false;
         }
-        else
+        else //武器切り替え入力うけつけ状態
         {
             ChangeWeapon();
         }
