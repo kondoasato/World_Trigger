@@ -7,7 +7,7 @@ public class WeaponInfo : WeaponManager
     [SerializeField]
     [Header("ID")] private WeaponID id;
     [SerializeField]
-    [Header("消費トリオン量")] private float consumption_trion;
+    [Header("消費トリオン量")] protected float consumption_trion;
 
     public WeaponID ID { get { return id; } set { id = value; } }
 }

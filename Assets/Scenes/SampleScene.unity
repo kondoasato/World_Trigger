@@ -3096,6 +3096,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 910231937}
     - target: {fileID: 228856865617564739, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
+      propertyPath: menuObj
+      value: 
+      objectReference: {fileID: 1087426689}
+    - target: {fileID: 228856865617564739, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
       propertyPath: weaponUIObj.Array.size
       value: 4
       objectReference: {fileID: 0}
