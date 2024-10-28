@@ -3119,6 +3119,10 @@ PrefabInstance:
       propertyPath: weaponUIObj.Array.data[3]
       value: 
       objectReference: {fileID: 1792171615}
+    - target: {fileID: 2200216594814738063, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 3491095160898386697, guid: 7042f98e3bd7ebf4987aa94478fa5449, type: 3}
     - target: {fileID: 6209014531313912925, guid: 64f730903b5298d42a9a61e9916f68d0, type: 3}
       propertyPath: menuObj
       value: 

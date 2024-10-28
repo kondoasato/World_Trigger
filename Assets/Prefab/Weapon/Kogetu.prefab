@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2021466840847199026}
   - component: {fileID: 2880710454775473500}
+  - component: {fileID: 9124540982092036659}
+  - component: {fileID: -6035863648146616424}
   m_Layer: 0
   m_Name: Kogetu
   m_TagString: Untagged
@@ -43,6 +45,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba0f3c2d510748e40a02db514f2ed489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  consumption_trion: 0
+--- !u!114 &9124540982092036659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3491095160898386697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b69ac38f4091b4898947ac25204c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ac_time: 1
+--- !u!114 &-6035863648146616424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3491095160898386697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c7108638f1b1749b2d468e419d011c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1

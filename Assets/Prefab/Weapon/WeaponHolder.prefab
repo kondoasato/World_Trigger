@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 1807099648182982543}
   - {fileID: 2248714971949754808}
   weaponUIObj: []
+  menuObj: {fileID: 0}
 --- !u!1001 &1299796244884003267
 PrefabInstance:
   m_ObjectHideFlags: 0
