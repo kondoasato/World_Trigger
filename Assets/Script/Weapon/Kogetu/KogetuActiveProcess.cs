@@ -8,6 +8,8 @@ public class KogetuActiveProcess : MonoBehaviour
     public static KogetuActiveProcess instance;
 
     [SerializeField]
+    [Header("武器の初期位置")] private GameObject weaponPos;
+    [SerializeField]
     [Header("発動時間")] private float ac_time;
 
     private enum State
@@ -40,11 +42,17 @@ public class KogetuActiveProcess : MonoBehaviour
         active_flg = true;
     }
 
+    public void SetPos(Vector3 pos)
+    {
+        firstPos = pos;
+    }
+
     private void Update()
     {
         if (active_flg)
         {
             nowstate = State.start;
+            active_flg = false;
         }
 
         switch (nowstate)
@@ -54,10 +62,11 @@ public class KogetuActiveProcess : MonoBehaviour
                 transform.position = firstPos;
                 transform.position = new Vector3(firstPos.x, firstPos.y, firstPos.z + 0.5f);
                 nowstate = State.motion; //状態移行
+
                 break;
 
             case State.motion: //発動中
-                Debug.Log("t"); //ここ来てない
+
                 //時間カウント
                 ac_count += Time.deltaTime;
                 //効果終了判定
@@ -75,7 +84,8 @@ public class KogetuActiveProcess : MonoBehaviour
 
             case State.end: //終了
                 //初期位置に移動
-                transform.position = firstPos;
+                transform.position = weaponPos.transform.position;
+                Debug.Log("t"); //ここ来てない
                 //カウント初期化
                 ac_count = 0;
                 nowstate = State.None;

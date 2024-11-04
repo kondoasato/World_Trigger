@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static WeaponManager;
 
 public class SetWeapon : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class SetWeapon : MonoBehaviour
     private WeaponManager.WeaponID now_id; //åªç›ÇÃïêäÌID
     private bool load_flg = false;
 
+    private KogetuActiveProcess kogetu;
 
     private void Start()
     {
@@ -54,6 +56,21 @@ public class SetWeapon : MonoBehaviour
                 }
                 load_flg = false;
             }
+        }
+
+        switch (now_id) //ïêäÌIDÇ≤Ç∆Ç…èàóù
+        {
+            case WeaponID.None:
+                break;
+            case WeaponID.Kogetu:
+                KogetuActiveProcess.instance.SetPos(this.transform.position);
+                break;
+            case WeaponID.Gun:
+                break;
+            case WeaponID.Asteroid:
+                break;
+            case WeaponID.Shield:
+                break;
         }
     }
 }
