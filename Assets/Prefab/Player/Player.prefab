@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dee044967687840b6865ab4cf8562e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpeed: 25
+  normalSpeed: 35
   sprintSpeed: 40
   groundObj: {fileID: 5449581744329219807}
   jump: 60

@@ -27,6 +27,21 @@ public class SetWeapon : MonoBehaviour
         for (int i = 0; i < weaponObj.Length; i++)
         {
             info[i] = weaponObj[i].GetComponent<WeaponInfo>();
+
+            switch (info[i].ID) //ïêäÌIDÇ≤Ç∆Ç…èàóù
+            {
+                case WeaponID.None:
+                    break;
+                case WeaponID.Kogetu:
+                    kogetu = info[i].GetComponent<KogetuActiveProcess>();
+                    break;
+                case WeaponID.Gun:
+                    break;
+                case WeaponID.Asteroid:
+                    break;
+                case WeaponID.Shield:
+                    break;
+            }
         }
     }
 
@@ -63,7 +78,7 @@ public class SetWeapon : MonoBehaviour
             case WeaponID.None:
                 break;
             case WeaponID.Kogetu:
-                KogetuActiveProcess.instance.SetPos(this.transform.position);
+                kogetu.SetPos(this.transform.position);
                 break;
             case WeaponID.Gun:
                 break;

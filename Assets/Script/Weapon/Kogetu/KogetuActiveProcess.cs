@@ -8,9 +8,9 @@ public class KogetuActiveProcess : MonoBehaviour
     public static KogetuActiveProcess instance;
 
     [SerializeField]
-    [Header("武器の初期位置")] private GameObject weaponPos;
-    [SerializeField]
     [Header("発動時間")] private float ac_time;
+    [SerializeField]
+    [Header("回転角度")] private float angle;
 
     private enum State
     {
@@ -21,9 +21,11 @@ public class KogetuActiveProcess : MonoBehaviour
     }
 
     private Vector3 firstPos;            //初期位置
+    private Quaternion firstRot;            //初期rotation
     private State nowstate = State.None; //
     private bool active_flg = false;     //発動フラグ
     private float ac_count = 0;          //発動カウント
+
 
     private void Start()
     {
@@ -31,7 +33,9 @@ public class KogetuActiveProcess : MonoBehaviour
         instance = this;
 
         //初期位置登録
-        firstPos = transform.position;
+        firstPos = transform.localPosition;
+
+        firstRot = transform.localRotation;
     }
 
     /// <summary>
@@ -59,8 +63,8 @@ public class KogetuActiveProcess : MonoBehaviour
         {
             case State.start: //効果発動
                 //移動
-                transform.position = firstPos;
-                transform.position = new Vector3(firstPos.x, firstPos.y, firstPos.z + 0.5f);
+                transform.localPosition = new Vector3(firstPos.x,firstPos.y,0.5f);
+
                 nowstate = State.motion; //状態移行
 
                 break;
@@ -72,19 +76,20 @@ public class KogetuActiveProcess : MonoBehaviour
                 //効果終了判定
                 if(ac_count > ac_time)
                 {
+                    transform.localRotation = firstRot;
                     nowstate = State.end; //状態移行
                 }
                 else
                 {
                     //オブジェクトx軸回転
-                    Quaternion rot = Quaternion.AngleAxis(10.0f, new Vector3(1.0f, 0.0f, 0.0f));
-                    transform.rotation = rot;
+                    Quaternion rot = Quaternion.AngleAxis(angle * ac_count, new Vector3(1.0f, 0.0f, 0.0f));
+                    transform.localRotation = rot;
                 }
                 break;
 
             case State.end: //終了
                 //初期位置に移動
-                transform.position = weaponPos.transform.position;
+                transform.localPosition = Vector3.zero;
                 Debug.Log("t"); //ここ来てない
                 //カウント初期化
                 ac_count = 0;
