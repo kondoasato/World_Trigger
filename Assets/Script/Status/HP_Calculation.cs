@@ -12,5 +12,17 @@ public class HP_Calculation : StatusInfo
         _weaponCollider = GetComponent<WeaponCollider>();
     }
 
+    private void Sub_HP()
+    {
 
+    }
+
+    private void Update()
+    {
+        if ( _weaponCollider.IsOn_P())
+        {
+            //hpå∏ÇÁÇ∑
+            Sub_HP();
+        }
+    }
 }
