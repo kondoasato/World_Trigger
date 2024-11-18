@@ -12,4 +12,9 @@ public class StatusInfo : MonoBehaviour
     /// HPプロパティ
     /// </summary>
     public int Hp {  get { return hp; } set { hp = value; } }
+
+    private void Update()
+    {
+        Debug.Log(hp);
+    }
 }

@@ -6,6 +6,7 @@ public class WeaponCollider : MonoBehaviour
 {
     private string p_tag = "P"; //プレイヤー・敵のタグ
     private WeaponInfo info;    //武器情報変数
+    private GameObject p_obj;   //侵入オブジェクト変数
 
     private bool isEnter = false; //侵入フラグ
     private bool isStay = false;  //当たっているフラグ
@@ -20,7 +21,7 @@ public class WeaponCollider : MonoBehaviour
     /// <summary>
     /// 当たり判定を返す
     /// </summary>
-    public bool IsOn_P(ref WeaponInfo.WeaponID id)
+    public bool IsOn_P(ref GameObject p, ref WeaponInfo.WeaponID id)
     {
         if (isEnter || isStay)
         {
@@ -32,6 +33,7 @@ public class WeaponCollider : MonoBehaviour
         isStay = false;
         isExit = false;
 
+        p = p_obj;
         id = info.ID;
 
         return isOn;
@@ -44,6 +46,7 @@ public class WeaponCollider : MonoBehaviour
         if (isOn_p)
         {
             isEnter = true;
+            p_obj = other.gameObject;
         }
     }
 
@@ -54,6 +57,7 @@ public class WeaponCollider : MonoBehaviour
         if (isOn_p)
         {
             isStay = true;
+            p_obj = other.gameObject;
         }
     }
 

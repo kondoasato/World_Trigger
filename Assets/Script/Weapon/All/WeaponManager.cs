@@ -62,13 +62,39 @@ public class WeaponManager : MonoBehaviour
     [SerializeField, EnumIndex(typeof(WeaponID))]
     private Damage[] damage;
 
+
+    /// <summary>
+    /// ダメージ値を返す
+    /// </summary>
+    /// <param name="weaponID">武器ID</param>
+    /// <returns>ダメージ値</returns>
+    public int GetDamage(WeaponID weaponID)
+    {
+        int temp = 0;
+
+        for (int i = 0; i < damage.Length; i++)
+        {
+            if (weaponID == damage[i].Id)
+            {
+                temp = damage[i].Damage_Num;
+            }
+        }
+        return temp;
+    }
+
     [System.Serializable]
     /// <summary>
     /// ダメージクラス
     /// </summary>
-    public class Damage
+    private class Damage
     {
         [SerializeField]
         private int damage_num;
+
+        [SerializeField]
+        private WeaponID id;
+
+        public int Damage_Num { get { return damage_num; } set { damage_num = value; } }
+        public WeaponID Id { get { return id; } }
     }
 }
