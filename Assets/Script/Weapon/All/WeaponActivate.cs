@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class WeaponActivate : WeaponInfo
 {
+    [SerializeField]
+    [Header("WeaponHolderオブジェクト")] private GameObject holderObj;
+    private WeaponHolder holder;
+
+    private void Start()
+    {
+        holder = holderObj.GetComponent<WeaponHolder>();
+    }
+
     /// <summary>
     /// 武器発動
     /// </summary>
     /// <returns>消費トリオン量</returns>
     public float Active()
     {
+        //ID取得
+        ID = holder.GetID();
+
         //武器効果発動処理を起動
         WeaponActiveProcess();
 

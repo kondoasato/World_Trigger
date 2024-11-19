@@ -37,6 +37,8 @@ public class HP_Calculation : MonoBehaviour
             //ó‚¯‚éƒ_ƒ[ƒWî•ñ‚ğæ“¾
             damage_num = _weaponManager.GetDamage(coll_id);
 
+            Debug.Log(damage_num);
+
             //hpŒ¸‚ç‚·
             Sub_HP();
         }

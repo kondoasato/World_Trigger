@@ -39,14 +39,14 @@ public class WeaponCollider : MonoBehaviour
         return isOn;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision) 
     {
-        bool isOn_p = (other.tag == p_tag);
-
+        bool isOn_p = (collision.collider.tag == p_tag);
+        Debug.Log("t"); //‚±‚±—ˆ‚Ä‚È‚¢
         if (isOn_p)
         {
             isEnter = true;
-            p_obj = other.gameObject;
+            p_obj = collision.gameObject;
         }
     }
 

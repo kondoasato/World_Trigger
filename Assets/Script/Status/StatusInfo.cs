@@ -15,6 +15,6 @@ public class StatusInfo : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(hp);
+        //Debug.Log(hp);
     }
 }

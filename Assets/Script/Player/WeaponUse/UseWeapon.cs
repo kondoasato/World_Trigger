@@ -5,13 +5,12 @@ using static WeaponManager;
 
 public class UseWeapon : MonoBehaviour
 {
-    [SerializeField]
-    [Header("weaponオブジェクト")] private GameObject weapon;
-    private WeaponActivate active;
+    private WeaponActivate active; //WeaponActivateスクリプト
+    private WeaponManager.WeaponID now_id; //現在装備中の武器ID
 
     private void Start()
     {
-        active = weapon.GetComponent<WeaponActivate>();
+        active = GetComponent<WeaponActivate>();
     }
 
     private void Update()

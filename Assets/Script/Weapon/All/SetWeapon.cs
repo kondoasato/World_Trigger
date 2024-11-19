@@ -5,20 +5,30 @@ using static WeaponManager;
 
 public class SetWeapon : MonoBehaviour
 {
+    #region//プライベート変数(インスペクター表示)
     [SerializeField]
     [Header("Weaponオブジェクト(Prefab)")] private GameObject[] weaponObj;
     [SerializeField]
     [Header("WeaponImageオブジェクト")] private GameObject imageObj;
     [SerializeField]
     [Header("Menuオブジェクト")] private GameObject menuObj;
+    #endregion
 
+    #region//プライベート変数
     private ChangeHolderImage menu_Image;  //weaponImageについてるchangeHolderスクリプト
     private WeaponInfo[] info;             //WeaponInfoスクリプト
     private WeaponManager.WeaponID now_id; //現在の武器ID
-    private bool load_flg = false;
+    private bool load_flg = false;         //
+    private KogetuActiveProcess kogetu;    //KogetuActiveProcessスクリプト
+    #endregion
 
-    private KogetuActiveProcess kogetu;
+    #region//プロパティ
 
+    /// <summary>
+    /// 現在IDプロパティ
+    /// </summary>
+    public WeaponManager.WeaponID Now_id { get { return now_id; } }
+    #endregion
     private void Start()
     {
         //各種コンポーネント取得

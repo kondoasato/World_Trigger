@@ -90,7 +90,6 @@ public class KogetuActiveProcess : MonoBehaviour
             case State.end: //終了
                 //初期位置に移動
                 transform.localPosition = Vector3.zero;
-                Debug.Log("t"); //ここ来てない
                 //カウント初期化
                 ac_count = 0;
                 nowstate = State.None;

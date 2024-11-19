@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 1865642117021435358}
   - component: {fileID: 5012397418980196374}
   - component: {fileID: 2200216594814738063}
-  - component: {fileID: 116166044633485794}
+  - component: {fileID: 5398977383871119482}
   m_Layer: 0
   m_Name: Player
   m_TagString: P
@@ -301,8 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48da762c61467e40b302c36ca1b8fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 1390550903494722066}
---- !u!114 &116166044633485794
+--- !u!114 &5398977383871119482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,10 +310,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6363323784674547893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e4ee691cb7850048b6e02c51cf6feee, type: 3}
+  m_Script: {fileID: 11500000, guid: 43c7108638f1b1749b2d468e419d011c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  damage: []
+  id: 0
+  consumption_trion: 0
+  holderObj: {fileID: 1390550903494722066}
 --- !u!1 &8376235887578306568
 GameObject:
   m_ObjectHideFlags: 0
