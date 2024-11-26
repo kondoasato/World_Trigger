@@ -4,70 +4,31 @@ using UnityEngine;
 
 public class WeaponCollider : MonoBehaviour
 {
-    private string p_tag = "P"; //プレイヤー・敵のタグ
-    private WeaponInfo info;    //武器情報変数
-    private GameObject p_obj;   //侵入オブジェクト変数
-
-    private bool isEnter = false; //侵入フラグ
-    private bool isStay = false;  //当たっているフラグ
-    private bool isExit = false;  //離れたフラグ
-    private bool isOn = false;    //当たり判定フラグ
+    private WeaponInfo info;     //武器情報変数
+    private StatusInfo p_obj;    //侵入オブジェクト変数
+    private HP_Calculation hp_C; //HP_Calculationスクリプト
 
     private void Start()
     {
         info = GetComponent<WeaponInfo>();
+        hp_C = GetComponent<HP_Calculation>();
     }
 
-    /// <summary>
-    /// 当たり判定を返す
-    /// </summary>
-    public bool IsOn_P(ref GameObject p, ref WeaponInfo.WeaponID id)
+    private void OnTriggerEnter(Collider other) 
     {
-        if (isEnter || isStay)
+
+        if (other.gameObject.GetComponent<HP_Calculation>())
         {
-            isOn = true;
-        }
-        else if (isExit) { isOn = false; }
-
-        isEnter = false;
-        isStay = false;
-        isExit = false;
-
-        p = p_obj;
-        id = info.ID;
-
-        return isOn;
-    }
-
-    private void OnCollisionEnter(Collision collision) 
-    {
-        bool isOn_p = (collision.collider.tag == p_tag);
-        Debug.Log("t"); //ここ来てない
-        if (isOn_p)
-        {
-            isEnter = true;
-            p_obj = collision.gameObject;
+            other.gameObject.GetComponent<HP_Calculation>().Sub_HP(info.ID);
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        bool isOn_p = (other.tag == p_tag);
 
-        if (isOn_p)
+        if (other.gameObject.GetComponent<HP_Calculation>())
         {
-            isStay = true;
-            p_obj = other.gameObject;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        bool isOn_p = (other.tag == p_tag);
-
-        if (isOn_p)
-        {
-            isExit = true;
+            other.gameObject.GetComponent<HP_Calculation>().Sub_HP(info.ID);
         }
     }
 }

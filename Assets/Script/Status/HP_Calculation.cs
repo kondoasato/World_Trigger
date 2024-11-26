@@ -6,41 +6,57 @@ public class HP_Calculation : MonoBehaviour
 {
     [SerializeField]
     [Header("WeaponManagerオブジェクト")] private GameObject weaponObj;
+    [SerializeField]
+    [Header("ダメージクールタイム")] private float cool_t;
 
-    private GameObject p_obj;               //侵入オブジェクト
     private StatusInfo info;                //StatusInfoスクリプト
-    private WeaponCollider _weaponCollider; //WeaponColliderスクリプト
-    private WeaponManager.WeaponID coll_id; //侵入オブジェクトID保持変数
-    private WeaponManager _weaponManager;
-    private int damage_num;
+    private WeaponManager _weaponManager;   //WeaponManagerスクリプト
+    private int damage_num;                 //ダメージ値
+    private bool damage_flg = false;        //ダメージフラグ
+    private float time = 0;                 //クールタイム計測
 
+    /// <summary>
+    /// damage_flgプロパティ
+    /// </summary>
+    public bool Damage_flg {  get { return damage_flg; } set { damage_flg = value; } }
+    
     private void Start()
     {
         //コンポーネント取得
-        _weaponCollider = GetComponent<WeaponCollider>();
+        info = GetComponent<StatusInfo>();
         _weaponManager = weaponObj.GetComponent<WeaponManager>();
     }
 
-    private void Sub_HP()
+    /// <summary>
+    /// ダメージ計算
+    /// </summary>
+    /// <param name="coll_id">侵入オブジェクトのID</param>
+    public void Sub_HP(WeaponManager.WeaponID coll_id)
     {
-        info.Hp -= damage_num;
+        if (damage_flg)
+        {
+            return;
+        }
+        else
+        {
+            //受けるダメージ情報を取得
+            damage_num = _weaponManager.GetDamage(coll_id);
+
+            info.Hp -= damage_num;
+            damage_flg = true;
+        }
     }
 
     private void Update()
     {
-        //当たり判定あったら
-        if ( _weaponCollider.IsOn_P(ref p_obj, ref coll_id))
+        if (damage_flg) //ダメージ処理
         {
-            //コンポーネント取得
-            info = p_obj.GetComponent<StatusInfo>();
+            time += Time.deltaTime;
 
-            //受けるダメージ情報を取得
-            damage_num = _weaponManager.GetDamage(coll_id);
-
-            Debug.Log(damage_num);
-
-            //hp減らす
-            Sub_HP();
+            if (time > cool_t)
+            {
+                damage_flg = false;
+            }
         }
     }
 }
