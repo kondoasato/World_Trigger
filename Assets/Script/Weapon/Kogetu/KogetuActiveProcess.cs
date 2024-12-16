@@ -8,10 +8,15 @@ public class KogetuActiveProcess : MonoBehaviour
     public static KogetuActiveProcess instance;
 
     [SerializeField]
+    [Header("ActiveInfoオブジェクト")] private GameObject acObj;
+    [SerializeField]
     [Header("発動時間")] private float ac_time;
     [SerializeField]
     [Header("回転角度")] private float angle;
 
+    /// <summary>
+    /// 処理状態の列挙体
+    /// </summary>
     private enum State
     {
         None,
@@ -20,17 +25,21 @@ public class KogetuActiveProcess : MonoBehaviour
         end
     }
 
+    private ActiveInfo activeInfo;       //ActiveInfoスクリプト
     private Vector3 firstPos;            //初期位置
-    private Quaternion firstRot;            //初期rotation
-    private State nowstate = State.None; //
+    private Quaternion firstRot;         //初期rotation
+    private State nowstate = State.None; //現在の状態
     private bool active_flg = false;     //発動フラグ
     private float ac_count = 0;          //発動カウント
+    private int active_code = 0;         //アクティブコード
 
 
     private void Start()
     {
         //インスタンス初期化
         instance = this;
+
+        activeInfo = acObj.GetComponent<ActiveInfo>();
 
         //初期位置登録
         firstPos = transform.localPosition;
@@ -64,6 +73,9 @@ public class KogetuActiveProcess : MonoBehaviour
             case State.start: //効果発動
                 //移動
                 transform.localPosition = new Vector3(firstPos.x,firstPos.y,0.5f);
+
+                //アクティブコード発行
+                active_code = activeInfo.Code_issued();
 
                 nowstate = State.motion; //状態移行
 
