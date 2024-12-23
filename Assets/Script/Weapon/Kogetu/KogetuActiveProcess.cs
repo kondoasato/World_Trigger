@@ -8,8 +8,6 @@ public class KogetuActiveProcess : MonoBehaviour
     public static KogetuActiveProcess instance;
 
     [SerializeField]
-    [Header("ActiveInfoオブジェクト")] private GameObject acObj;
-    [SerializeField]
     [Header("発動時間")] private float ac_time;
     [SerializeField]
     [Header("回転角度")] private float angle;
@@ -25,6 +23,7 @@ public class KogetuActiveProcess : MonoBehaviour
         end
     }
 
+    private GameObject acObj;
     private ActiveInfo activeInfo;       //ActiveInfoスクリプト
     private Vector3 firstPos;            //初期位置
     private Quaternion firstRot;         //初期rotation
@@ -38,7 +37,7 @@ public class KogetuActiveProcess : MonoBehaviour
     {
         //インスタンス初期化
         instance = this;
-
+        acObj = GameObject.Find("GameUICanvas");
         activeInfo = acObj.GetComponent<ActiveInfo>();
 
         //初期位置登録
@@ -52,6 +51,7 @@ public class KogetuActiveProcess : MonoBehaviour
     /// </summary>
     public void Process()
     {
+        if(active_code != 0) { return;} //アクティブコードがあれば実行拒否
         active_flg = true;
     }
 
